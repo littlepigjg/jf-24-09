@@ -110,3 +110,47 @@ export interface ApiResponse<T> {
   error?: string
   message?: string
 }
+
+export interface GraphNode {
+  id: string
+  name: string
+  shortCode: string
+  targetUrl: string
+  type: QrCodeType
+  enabled: boolean
+  scanCount: number
+  indegree: number
+  outdegree: number
+  anomalyType?: 'cycle' | 'orphan' | 'broken'
+}
+
+export interface GraphEdge {
+  source: string
+  target: string
+  broken: boolean
+}
+
+export interface DependencyGraph {
+  nodes: GraphNode[]
+  edges: GraphEdge[]
+  cycles: string[][]
+  orphanIds: string[]
+  brokenEdges: GraphEdge[]
+}
+
+export interface CascadeSuggestion {
+  type: 'update' | 'delete' | 'redirect'
+  affectedIds: string[]
+  description: string
+  risk: 'low' | 'medium' | 'high'
+}
+
+export interface ImpactAnalysis {
+  node: GraphNode
+  upstreamIds: string[]
+  downstreamIds: string[]
+  allDownstreamIds: string[]
+  allUpstreamIds: string[]
+  cascadePaths: string[][]
+  suggestions: CascadeSuggestion[]
+}

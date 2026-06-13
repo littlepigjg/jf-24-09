@@ -11,6 +11,7 @@ import {
   Zap,
   Bell,
   Search,
+  GitBranch,
 } from "lucide-react";
 import { useState } from "react";
 
@@ -18,6 +19,7 @@ const navItems = [
   { to: "/dashboard", label: "仪表盘", icon: LayoutDashboard },
   { to: "/qrcodes", label: "二维码列表", icon: QrCode },
   { to: "/qrcodes/new", label: "创建二维码", icon: PlusCircle },
+  { to: "/dependency", label: "依赖图谱", icon: GitBranch },
   { to: "/batch", label: "批量生成", icon: Layers3 },
   { to: "/export", label: "导出中心", icon: Download },
 ];
@@ -28,6 +30,7 @@ const breadcrumbMap: Record<string, { label: string; parent?: string }> = {
   new: { label: "创建二维码", parent: "qrcodes" },
   edit: { label: "编辑二维码", parent: "qrcodes" },
   stats: { label: "数据统计", parent: "qrcodes" },
+  dependency: { label: "依赖图谱" },
   batch: { label: "批量生成" },
   export: { label: "导出中心" },
 };

@@ -7,6 +7,7 @@ import QrCodeEdit from "@/pages/QrCodeEdit";
 import QrCodeStats from "@/pages/QrCodeStats";
 import BatchGenerator from "@/pages/BatchGenerator";
 import ExportCenter from "@/pages/ExportCenter";
+import DependencyGraph from "@/pages/DependencyGraph";
 
 export default function App() {
   return (
@@ -21,6 +22,7 @@ export default function App() {
           <Route path="qrcodes/:id/stats" element={<QrCodeStats />} />
           <Route path="batch" element={<BatchGenerator />} />
           <Route path="export" element={<ExportCenter />} />
+          <Route path="dependency" element={<DependencyGraph />} />
           <Route path="*" element={<Navigate to="/dashboard" replace />} />
         </Route>
       </Routes>

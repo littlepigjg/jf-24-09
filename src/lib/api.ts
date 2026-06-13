@@ -9,6 +9,8 @@ import type {
   QrCodeStats,
   PagedResult,
   ApiResponse,
+  DependencyGraph,
+  ImpactAnalysis,
 } from "@shared/types";
 
 const API_BASE = "/api";
@@ -138,5 +140,13 @@ export const api = {
     if (params?.page) q.set("page", String(params.page));
     if (params?.pageSize) q.set("pageSize", String(params.pageSize));
     return request<PagedResult<BatchTask>>(`/export/tasks${q.toString() ? `?${q.toString()}` : ""}`);
+  },
+
+  getDependencyGraph(): Promise<DependencyGraph> {
+    return request<DependencyGraph>("/dependency/graph");
+  },
+
+  getImpactAnalysis(id: string): Promise<ImpactAnalysis> {
+    return request<ImpactAnalysis>(`/dependency/impact/${id}`);
   },
 };
